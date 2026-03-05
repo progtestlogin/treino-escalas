@@ -1,0 +1,20 @@
+@keyframes notePulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255,213,79,0);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow:
+      0 0 20px var(--amarelo),
+      0 0 40px var(--azul-secundario);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255,213,79,0);
+  }
+}
+
+.playing {
+  animation: notePulse 0.25s ease-out;
+}

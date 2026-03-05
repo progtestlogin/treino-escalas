@@ -1,0 +1,101 @@
+:root[data-theme="dark"] {
+  --azul-primario: #1565c0;
+  --azul-secundario: #1e88e5;
+  --azul-escuro: #0b1c2d;
+
+  --amarelo: #ffd54f;
+  --amarelo-escuro: #ffb300;
+
+  --fundo: #0f1720;
+  --painel: #16202b;
+  --borda: #263445;
+  --texto: #e3f2fd;
+  --texto-suave: #90caf9;
+
+  --body-background: radial-gradient(circle at top, #1e88e5, #020617);
+
+  --conteudo-background: linear-gradient(180deg, #0f1720, #020617);
+  --conteudo-box-shadow: 0 30px 70px rgba(0,0,0,0.8);
+
+  --conteudo-meio-background: linear-gradient(180deg, #16202b, #0f1720);
+  --conteudo-meio-box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+
+  --btnNote-background: radial-gradient(circle at top, var(--azul-secundario), var(--azul-primario));
+  --btnNote-box-shadow: 0 0 0 rgba(255,213,79,0), inset 0 0 10px rgba(255,255,255,0.1);
+
+  --btnNote-hover-background: none;
+  --btnNote-hover-color: none;
+  --btnNote-hover-transform: none;
+  --btnNote-hover-box-shadow: 0 0 12px rgba(255,213,79,0.4), 0 0 24px rgba(30,136,229,0.6);
+
+  --lblNote-background: linear-gradient(135deg, var(--amarelo), var(--amarelo-escuro));
+  --lblNote-color: #000;
+  --lblNote-box-shadow: 0 0 10px rgba(255,213,79,0.6), 0 0 25px rgba(255,213,79,0.3);
+
+  --velcNotasLbl-volNotasLbl-color: var(--texto-suave);
+
+  --play-pause-btn-background: linear-gradient(135deg, #ffd54f, #ff8f00);
+  --play-pause-btn-box-shadow: 0 0 15px rgba(255,213,79,0.6), 0 0 40px rgba(255,143,0,0.4);
+
+  --play-pause-btn-hover-box-shadow: 0 0 20px rgba(255,213,79,0.9), 0 0 60px rgba(255,143,0,0.6);
+}
+
+:root[data-theme="light"] {
+  --azul-primario: #1e88e5;
+  --azul-secundario: #42a5f5;
+  --azul-escuro: #0d47a1;
+
+  --amarelo: #ffca28;
+  --amarelo-escuro: #f9a825;
+
+  --branco: #ffffff;
+  --cinza: #cfd8dc;
+
+  --fundo: #f4f6f8;
+  --painel: #ffffff;
+  --texto: #263238;
+  --borda: #cfd8dc;
+
+  --body-background: linear-gradient(135deg, var(--azul-primario), var(--azul-escuro));
+
+  --conteudo-background: var(--fundo);
+  --conteudo-box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+
+  --conteudo-meio-background: var(--branco);
+  --conteudo-meio-box-shadow: inset 0 0 0 2px var(--cinza);
+
+  --btnNote-background: var(--azul-secundario);
+  --btnNote-box-shadow: none;
+
+  --btnNote-hover-background: var(--amarelo);
+  --btnNote-hover-color: #000;
+  --btnNote-hover-transform: translateY(-2px);
+  --btnNote-hover-box-shadow: none;
+
+  --lblNote-background: var(--amarelo);
+  --lblNote-color: none;
+  --lblNote-box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+
+  --velcNotasLbl-volNotasLbl-color: var(--azul-escuro);
+
+  --play-pause-btn-background: linear-gradient(135deg, var(--amarelo), var(--amarelo-escuro));
+  --play-pause-btn-box-shadow: none;
+
+  --play-pause-btn-hover-box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--texto);
+  transition: transform 0.2s;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.2);
+}
