@@ -187,6 +187,8 @@ function decrementaOitava() {
 
 async function playPause() {
 
+    await Tone.start(); // Inicia o contexto de áudio após o clique do usuário.
+
     if (playing) {
         stopSound();
         return;
@@ -200,8 +202,6 @@ async function playPause() {
     const bpmNotas = document.querySelector("#velcNotasRng").value;
     const volNotas = document.querySelector("#volNotasRng").value;
     const tipoEscala = document.querySelector("#tipoEscalaSel").value;
-
-    await Tone.start(); // Inicia o contexto de áudio após o clique do usuário.
 
     let paramNotasPorTempo = 60.0/bpmNotas;
 
