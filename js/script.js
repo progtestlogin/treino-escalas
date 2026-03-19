@@ -188,7 +188,13 @@ function decrementaOitava() {
 async function playPause() {
 
     await Tone.start(); // Inicia o contexto de áudio após o clique do usuário.
-
+    
+    if (Tone.Transport.state !== 'started') {
+        Tone.Transport.start();
+    } else {
+        Tone.Transport.pause(); // Pauses the audio
+    }
+    
     if (playing) {
         stopSound();
         return;
