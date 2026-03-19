@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escala Musical com Tone.js</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <style id="rgbStyle"></style>
+    <!-- Importa a biblioteca Tone.js -->
+    <script src="https://unpkg.com/tone"></script>
+    <!-- Importa a biblioteca Tonal.js -->
+    <script src="https://cdn.jsdelivr.net/npm/tonal/browser/tonal.min.js"></script>
+</head>
+<body>
+    <button id="themeToggle" class="theme-toggle">🌙</button>
+    <div class="conteudo">
+        <div class="conteudo_esq">
+            <!-- Coluna da Esquerda -->
+            <!-- <label id="volLbl" for="volume">Volume</label>
+            <div class="slider-container">
+                <span class="rulers"></span>
+                <span class="bar"><span class="fill"></span></span>
+                <input type="range" id="slider" class="slider" min="0" max="100" value="50" step="1.0">
+            </div>
+            <label id="volLblVal" for="volume">volLbl</label> -->
+        </div>
+        <div class="conteudo_meio">
+            <div class="notediv">
+                <button class="btnNote" id="decOitava" onclick="decrementaOitava()">&#9660</button>
+                <button class="btnNote" id="decNota" onclick="decrementaNota()">&#9664</button>
+                <lable class="lblNote" id="tonicaTxt" onclick="playPause()">Tônica</lable>
+                <button class="btnNote" id="incNota" onclick="incrementaNota()">&#9654</button>
+                <button class="btnNote" id="incOitava" onclick="incrementaOitava()">&#9650</button>
+            </div>
+            <div>
+                <input type="radio" name="sequenciaNotas" id="sobeArpejo" value="sobeArpejo">
+                <label for="sobeArpejo">Arpejo &nearrow;</label>
+                <input type="radio" name="sequenciaNotas" id="desceArpejo" value="desceArpejo">
+                <label for="desceArpejo">Arpejo &swarrow;</label>
+                <input type="radio" name="sequenciaNotas" id="sobeTerca" value="sobeTerca">
+                <label for="sobeTerca">Terça &nearrow;</label>
+                <input type="radio" name="sequenciaNotas" id="desceTerca" value="desceTerca">
+                <label for="desceTerca">Terça &swarrow;</label>
+            </div>
+            <div>
+                <select id="qntNotasSel" name="qntNotas" required="required">
+                </select>
+            </div>
+            <div>
+                <select id="duraNotasSel" name="duraNotas" required="required">
+                    <option value="1n">&#119133;</option>   <!--  semibreve   -->
+                    <option value="2n">&#119134;</option>   <!--    minima    -->
+                    <option value="4n">&#119135;</option>   <!--   seminima   -->
+                    <option value="8n">&#119136;</option>   <!--    colcheia  -->
+                    <option value="16n">&#119137;</option>  <!-- semicolcheia -->
+                    <option value="32n">&#119138;</option>  <!--     fusa     -->
+                    <option value="64n">&#119139;</option>  <!--   semifusa   -->
+                </select>
+            </div>
+            <div>
+                <label id="velcNotasLbl" for="velocidadeNotas">Velocidade</label>
+                <input type="range" id="velcNotasRng" name="velocidadeNotas" min="40" max="200" val="100">
+                <label id="velcNotasLblVal" for="velocidadeNotas">valocNotasLbl</label>
+                <br>
+                <label id="volNotasLbl" for="volumeNotas">Volume</label>
+                <input type="range" id="volNotasRng" name="volumeNotas" min="-30" max="3" val="0" step="0.5">
+                <label id="volNotasLblVal" for="volumeNotas">volNotasLbl</label>
+            </div>
+            <div>
+                <label id="tipoEscalaLbl" for="TipoEscalaNotas">Escala</label>
+                <select id="tipoEscalaSel" name="TipoEscalaNotas" required="required">
+                    <optgroup label="Maior">
+                        <option value="major">Maior</option>
+                    </optgroup>
+                    <optgroup label="Menor">
+                        <option value="minor">Menor Natural</option>
+                        <option value="harmonic minor">Menor Harmônica</option>
+                        <option value="melodic minor">Menor Melódica</option>
+                    </optgroup>
+                    <optgroup label="Pentatônica">
+                        <option value="major pentatonic">Pentatônica Maior</option>
+                        <option value="minor pentatonic">Pentatônica Menor</option>
+                    </optgroup>
+                    <optgroup label="Blues">
+                        <option value="major blues">Blues Maior</option> 
+                        <option value="minor blues">Blues Menor</option>
+                    </optgroup>
+                    <optgroup label="Modos Gregos">
+                        <option value="major">Modo Jônico</option> 
+                        <option value="dorian">Modo Dórico</option> 
+                        <option value="phrygian">Modo Frígio</option> 
+                        <option value="lydian">Modo Lídio</option> 
+                        <option value="mixolydian">Modo Mixolídio</option> 
+                        <option value="minor">Modo Eólico</option> 
+                        <option value="locrian">Modo Lócrio</option> 
+                    </optgroup>
+                    <optgroup label="Exóticas">
+                        <option value="diminished">Diminuta</option>
+                        <option value="harmonic major">Harmônica Maior</option>
+                        <option value="double harmonic major">Dupla Harmônica Maior</option>
+                        <option value="major augmented">Maior Aumentada</option>
+                        <option value="oriental">Oriental</option>
+                        <option value="flamenco">Flamenca</option>
+                    </optgroup>
+                    <option value="chromatic">Cromática</option>
+                </select>
+            </div>
+            <br>
+            <div class="toggle-play">
+                <button id="escalaPlayPause" class="play-pause-btn" onclick="playPause()">Tocar Escala</button>
+            </div>
+        </div>
+        <div class="conteudo_dir">
+            <!-- Coluna da Direita -->
+        </div>
+    </div>
+
+    <script src="js/themeToggle.js"></script>
+    <script src="js/audioFX.js"></script>
+    <script src="js/scaleColors.js"></script>
+    <script src="js/script_exercicio.js"></script>
+</body>
+</html>
